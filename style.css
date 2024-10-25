@@ -1,0 +1,235 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #4facfe, #00f2fe); /* Gradient background */
+  color: #333;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color:rgba(2,37,78,1);
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Elevated box shadow */
+  border-radius: 15px; /* Rounded corners for a modern look */
+  transition: transform 0.3s ease; /* Add hover effect */
+}
+
+.container:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+}
+
+/* Login and Registration Forms */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+form input[type="text"], form input[type="password"], form input[type="email"], form input[type="number"], form input[type="tel"] {
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus, form input[type="password"]:focus, form input[type="email"]:focus, form input[type="number"]:focus, form input[type="tel"]:focus {
+  border-color: #4facfe; /* Change border color on focus */
+}
+
+form input[type="submit"] {
+  padding: 12px;
+  font-size: 18px;
+  background: linear-gradient(to right, #36d1dc, #5b86e5); /* Gradient button */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.3s ease;
+  margin-top: 10px;
+}
+
+form input[type="submit"]:hover {
+  background: linear-gradient(to right, #5b86e5, #36d1dc); /* Hover effect for gradient */
+  transform: translateY(-3px); /* Lift the button on hover */
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: linear-gradient(to right, #ff6a00, #ee0979); /* Gradient for other buttons */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(to right, #ee0979, #ff6a00);
+  transform: translateY(-3px); /* Lift on hover */
+}
+
+/* Center content */
+.login-container, .signup-container, .dashboard-container {
+  max-width: 500px;
+  margin: 100px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer shadow */
+}
+
+p {
+  font-size: 15px;
+  color: #666;
+  text-align: center;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* OTP button */
+#request-otp {
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Creative gradient */
+  margin-top: 10px;
+  padding: 12px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+#request-otp:hover {
+  background: linear-gradient(to right, #feb47b, #ff7e5f);
+  transform: translateY(-3px);
+}
+
+/* Table for displaying candidate details */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+}
+
+th {
+  background: linear-gradient(to right, #00c6ff, #0072ff); /* Gradient for table header */
+  color: white;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+tr:hover td {
+  background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+      max-width: 90%;
+      margin: 10px;
+  }
+
+  form input[type="submit"], button {
+      font-size: 14px;
+  }
+}
+
+/* Sign-Up Form Styles */
+.signup-container {
+  max-width: 450px;
+  margin: 80px auto;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.signup-container h2 {
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #4facfe;
+  text-align: center;
+}
+
+.signup-container form label {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.signup-container form input[type="text"], 
+.signup-container form input[type="password"], 
+.signup-container form input[type="email"], 
+.signup-container form input[type="tel"], 
+.signup-container form input[type="number"] {
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  background-color: #f5f5f5;
+}
+
+.signup-container form input[type="submit"] {
+  width: 100%;
+  background: linear-gradient(to right, #36d1dc, #5b86e5);
+  border: none;
+  padding: 14px;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.signup-container form input[type="submit"]:hover {
+  background: linear-gradient(to right, #5b86e5, #36d1dc);
+  transform: translateY(-3px);
+}
+
+.signup-container p {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+.signup-container a {
+  color: #4facfe;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-container a:hover {
+  color: #36d1dc;
+}

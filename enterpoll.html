@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Role - Lumivote</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        nav {
+            background: rgba(75, 121, 161, 0.9);
+            padding: 10px;
+            color: #ffbf00;;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        nav .logo {
+            display: flex;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: inline-block;
+            float: right;
+        }
+
+        nav .nav-links li {
+            display: flex;
+            margin-left: 20px;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .role-selection {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .role-selection:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            color: #1aaa3e;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4b79a1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #283e51;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 90%;
+        }
+
+        input:focus {
+            border-color: #4b79a1;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Section -->
+    <nav>
+        <div class="logo">Lumivote</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- Role Selection Section -->
+    <section class="role-selection">
+        <h1>Select Your Role</h1>
+        <p>Are you a candidate or a voter?</p>
+        <button onclick="showCandidateForm()">Candidate</button>
+        <button onclick="showVoterForm()">Voter</button>
+
+        <!-- Candidate Form -->
+        <div id="candidateForm" style="display:none;">
+            <h2>Candidate Access</h2>
+            <input type="text" id="candidatePin" placeholder="Enter Election PIN" required>
+            <button onclick="accessCandidate()">Access Candidate Details</button>
+        </div>
+
+        <!-- Voter Form -->
+        <div id="voterForm" style="display:none;">
+            <h2>Voter Registration</h2>
+            <input type="text" id="voterName" placeholder="Your Name" required>
+            <input type="text" id="voterPhone" placeholder="Your Phone Number" required>
+            <input type="text" id="voterPin" placeholder="Enter Election PIN" required>
+            <button onclick="location.href='createpoll.html'" type="submit">Enter</></button>
+        </div>
+    </section>
+
+    <script>
+        // Show Candidate Form
+        function showCandidateForm() {
+            document.getElementById('candidateForm').style.display = 'block';
+            document.getElementById('voterForm').style.display = 'none';
+        }
+
+        // Show Voter Form
+        function showVoterForm() {
+            document.getElementById('voterForm').style.display = 'block';
+            document.getElementById('candidateForm').style.display = 'none';
+        }
+
+        // Function to handle candidate access
+        function accessCandidate() {
+            const candidatePin = document.getElementById('candidatePin').value;
+            alert(`Candidate access granted with PIN: ${candidatePin}`);
+            // Redirect to candidate editing page or show candidate details
+            // window.location.href = 'candidate-edit.html'; // Uncomment for actual navigation
+        }
+
+        // Function to handle voter registration
+        function registerVoter() {
+            const voterName = document.getElementById('voterName').value;
+            const voterPhone = document.getElementById('voterPhone').value;
+            const voterPin = document.getElementById('voterPin').value;
+            // Redirect to voting confirmation page or handle vote submission
+             //window.location.href = 'demo_voting.html'; // Uncomment for actual navigation
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eVoting - Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at 10% 20%, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%); /* Gradient background */
+  color: #333;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color:rgba(2,37,78,1);
+  margin-bottom: 20px;
+}
+
+/* Sign-Up Form Styles */
+.signup-container {
+  max-width: 450px;
+  margin: 80px auto;
+  padding: 25px;
+  background-color: rgb(137, 234, 153);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.signup-container h2 {
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #060e15;
+  text-align: center;
+}
+
+.signup-container form label {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.signup-container form input[type="text"], 
+.signup-container form input[type="password"], 
+.signup-container form input[type="email"], 
+.signup-container form input[type="tel"], 
+.signup-container form input[type="number"] {
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  background-color: #f5f5f5;
+}
+
+.signup-container form input[type="submit"] {
+  width: 100%;
+  background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+  border: none;
+  padding: 14px;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 10px
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.signup-container form input[type="submit"]:hover {
+    background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+  transform: translateY(-3px);
+}
+
+.signup-container p {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+
+.signup-container img{
+            max-width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+.signup-container a {
+  color: #4facfe;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-container a:hover {
+    background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+}
+
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <img src="sign-up.png" alt="signup">
+        <form onsubmit="redirectToIndex(event)" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            
+            <input type="submit" value="Sign up">
+        </form>
+
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+    </div>
+
+    <script>
+        function redirectToIndex(event) {
+          event.preventDefault();
+            // For demonstration, assume login is always successful
+            localStorage.setItem('isLoggedIn', 'true');  // Set login state
+            window.location.href = 'enterpoll.html';  // Redirect to homepage after login
+        }
+    </script>
+
+</body>
+</html>

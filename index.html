@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumivote</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #fff;
+            padding: 10px;
+            display: flex;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height:fit-content;
+        }
+
+        .navbar a {
+            margin: 30px 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            align-items: right;
+        }
+
+        .navbar h1{
+            align-items: left;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffbf00;
+            color: white;
+        }
+
+        .welcome-section h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            background-color: #fff7e5;
+            height: 66vh;
+        }
+
+        .hero-content {
+            max-width: 50%;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            color: #ffbf00;
+        }
+
+        .hero-content p {
+            font-size: 2em;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #ffbf00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .cta-button:hover{
+            background-color: #ffbf00;
+        }
+        .hero img {
+            max-width: 50%;
+            height: 70vh;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            text-align: center;
+            background-color:  #fff7e5;
+            height:20vh;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #176947;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .step {
+            background-color: #abd74d;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .step img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            margin-top: 0;
+        }
+
+        .step p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Make sections full height for scroll effect */
+        section {
+            min-height: 100vh;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>LUMIVOTE</h1>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Signup</a>
+        <a href="contacts.html">Contact</a>
+    </div>
+
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <h2>Welcome to Lumivote</h2>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>LUMIVOTE</h1>
+            <p>A reliable and secure voting platform.</p>
+            <a href="#login" class="cta-button">Get Started</a>
+        </div>
+        <img src="voting-img.png" alt="Voting Illustration">
+    </div>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2>~HOW IT WORKS~</h2>
+        <div class="steps-container">
+            <!-- Step 1 -->
+            <div class="step">
+                <img src="voting.png" alt="Create Election">
+                <h3>Create an Election</h3>
+                <p>Sign up or log in, and customize your election.</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="step">
+                <img src="https://img.icons8.com/clouds/100/share.png" alt="Share Election ID">
+                <h3>Share Election ID</h3>
+                <p>Share the unique Election ID with voters to enter securely.</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="step">
+                <img src="https://img.icons8.com/clouds/100/key.png" alt="Enter Election">
+                <h3>Enter an Election</h3>
+                <p>Voters can enter the Election ID to participate.</p>
+            </div>
+            <!-- Step 4 -->
+            <div class="step">
+                <img src="result-image.png" alt="View Results">
+                <h3>View Results</h3>
+                <p>See real-time results after the election ends.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+                <p>© 2024 Lumivote. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

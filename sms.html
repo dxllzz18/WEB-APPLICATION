@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting - Lumivote</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sansf9f9;-serif;
+            background-color: rgb(137, 234, 153);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Layout Container */
+        .main-container {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 800px;
+            max-width: 90%;
+        }
+
+        /* Left Image Section */
+        .left-image {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+
+        /* Voting Section */
+        .voting-section {
+            padding: 40px;
+            text-align: center;
+            width: 50%;
+        }
+
+        .voting-section h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        button {
+            background-color: rgb(137, 234, 153);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background: radial-gradient(circle at 10% 20%, rgb(255, 197, 61) 0%, rgb(255, 94, 7) 90%);
+        }
+
+        /* Candidate and OTP Section Styling */
+        #otpSection, #candidateSection {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #candidateSection h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #candidateList {
+            list-style: none;
+            padding: 0;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+
+        #candidateList li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <!-- Left Image Section -->
+    <div class="left-image">
+        <img src="otp-sms.png" alt="otp"> 
+    </div>
+
+    <!-- Voting Section -->
+    <section class="voting-section">
+        <h1>Enter Phone Number</h1>
+        <input type="text" id="phoneNumber" placeholder="Phone Number" required>
+        <button onclick="sendOTP()">Send OTP</button>
+
+        <!-- OTP Input Section -->
+        <div id="otpSection">
+            <input type="text" id="otpInput" placeholder="Enter OTP" required>
+            <button onclick="verifyOTP()" >Verify OTP
+            <a href="enterpoll.html"></a>
+        </div>
+    </section>
+</div>
+
+<script>
+
+    // Function to send OTP
+    function sendOTP() {
+        let phoneNumber = document.getElementById('phoneNumber').value;
+        if (phoneNumber) {
+            alert('OTP has been sent to ' + phoneNumber);
+            document.getElementById('otpSection').style.display = 'block';
+        } else {
+            alert('Please enter a valid phone number.');
+        }
+    }
+
+    // Function to verify OTP
+    function verifyOTP() {
+        let otp = document.getElementById('otpInput').value;
+        if (otp === '1234') { // Example OTP
+            alert('OTP verified successfully.');
+            window.location.href = 'vote.html';
+            document.getElementById('otpSection').style.display = 'none';
+            document.getElementById('candidateSection').style.display = 'block';
+            loadCandidates();
+        } else {
+            alert('Invalid OTP. Please try again.');
+        }
+    }
+
+</script>
+
+</body>
+</html>
