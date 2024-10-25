@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Election - Lumivote</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%);
+            color: #171717;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Adjusted to use column layout */
+        }
+
+        nav {
+            display: flex; /* Use flexbox for better alignment */
+            justify-content: space-between;
+            align-items: center; /* Center items vertically */
+            padding: 20px 50px;
+            background-color: #ffbf00; /* Navbar background color */
+        }
+
+        .logo {
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        nav .nav-links li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: #ffdd57; /* Change link color on hover */
+        }
+
+        .create-election-section {
+            background-color: rgb(137, 234, 153);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(37, 149, 129, 0.2);
+            transition: transform 0.3s;
+            position: relative;
+            width: 400px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 1;
+            margin: 40px auto; /* Center the section */
+   }
+
+        .create-election-section:hover {
+            transform: scale(1.05);
+        }
+  
+        .motivational-text {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            color: #20454b;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px white;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .candidate {
+            margin-bottom: 10px;
+        }
+
+        .candidate input {
+            width: calc(50% - 10px);
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4b79a1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #283e51;
+        }
+
+        /* New Styles for the right image */
+        .right-image {
+            width: 300px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            position: absolute; /* Allow overlap */
+            top: 20%; /* Position from the top */
+            right: -10%; /* Position outside the container */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Section -->
+    <nav>
+        <div class="logo">Lumivote</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- Create Election Section -->
+    <section class="create-election-section">
+        <div class="motivational-text">EMPOWER Your Voice!!</div>
+        <h1>Create a New Election</h1>
+        <form id="electionForm">
+            <div class="form-group">
+                <label for="electionName">Election Name:</label>
+                <input type="text" id="electionName" required>
+            </div>
+            <div class="form-group">
+                <label for="numParticipants">Number of Participants:</label>
+                <input type="number" id="numParticipants" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="electionPin">Election PIN:</label>
+                <input type="text" id="electionPin" maxlength="4" required>
+                <div class="pin-comment" style="color:#121e1d">* Create a 4-digit PIN for your election</div>
+            </div>
+            <div class="form-group">
+                <label for="creatorPassword">Creator Password:</label>
+                <input type="password" id="creatorPassword" required>
+                <div class="pin-comment">* Password for election creator access</div>
+            </div>
+            <div class="form-group">
+                <h3>Candidates:</h3>
+                <div id="candidatesContainer"></div>
+                <button type="button" onclick="addCandidate()">Add Candidate</button>
+            </div>
+            <button type="submit">Create a New Election</button>
+        </form>
+
+    </section>
+
+    <script>
+        // Function to add candidate fields
+        function addCandidate() {
+            const candidatesContainer = document.getElementById('candidatesContainer');
+            const candidateDiv = document.createElement('div');
+            candidateDiv.className = 'candidate';
+            candidateDiv.innerHTML = `
+                <input type="text" placeholder="Candidate Name" class="candidateName" required>
+                <input type="text" placeholder="Candidate Party" class="candidateParty" required><br>
+                <button type="button" onclick="removeCandidate(this)">Remove</button>
+            `;
+            candidatesContainer.appendChild(candidateDiv);
+        }
+    
+        // Function to remove candidate fields
+        function removeCandidate(button) {
+            const candidateDiv = button.parentElement;
+            candidateDiv.remove();
+        }
+    
+        // Handle form submission
+        document.getElementById('electionForm').onsubmit = function(event) {
+            event.preventDefault(); // Prevent actual form submission
+            
+            const electionName = document.getElementById('electionName').value;
+            const numParticipants = document.getElementById('numParticipants').value;
+            const electionPin = document.getElementById('electionPin').value;
+            const creatorPassword = document.getElementById('creatorPassword').value;
+            const candidates = Array.from(document.querySelectorAll('.candidate')).map(candidate => {
+                const candidateName = candidate.querySelector('.candidateName').value;
+                const candidateParty = candidate.querySelector('.candidateParty').value;
+                
+                if (!candidateName || !candidateParty) {
+                    alert('Please fill out all candidate fields.');
+                    return;
+                }
+                
+                return {
+                    name: candidateName,
+                    party: candidateParty
+                };
+            }).filter(Boolean);
+    
+            if (candidates.length === 0) {
+                alert('Please add at least one candidate.');
+                return;
+            }
+
+            // Store the election data in localStorage
+            const electionData = {
+                electionName,
+                numParticipants,
+                electionPin,
+                creatorPassword,
+                candidates
+            };
+            localStorage.setItem('electionData', JSON.stringify(electionData));
+    
+            // Display success message
+            alert('Election Created Successfully!');
+    
+            // Redirect to the voting page after creating the election
+            window.location.href = 'enterpoll.html';
+        };
+    </script>
+</body>
+</html>
