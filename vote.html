@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting - Lumivote</title>
+    <link rel="stylesheet" href="style1.css">
+    <nav>
+        <div class="logo">Lumivote</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        
+        nav {
+            background: #9ea0a1;
+            padding: 10px;
+            color: white;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        nav .logo {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flexbox;
+        }
+
+        nav .nav-links li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        nav .nav-links a {
+            color: white;
+            text-decoration: none;
+            
+        }
+
+
+        .voting-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 900px;
+            width: 90%;
+            color: #333;
+            position: relative;
+        }
+
+        .voting-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .voting-section::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: #9ea0a1;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .candidate-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .candidate-card {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            width: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .candidate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .candidate-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #4b79a1;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .candidate-card label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .candidate-card p {
+            font-size: 1rem;
+            margin: 0;
+            color: #666;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: rgb(137, 234, 153);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s ease-in-out, box-shadow 0.3s;
+            margin-top: 30px;
+        }
+
+        button:hover {
+            background-color: #ff6b95;
+            box-shadow: 0 6px 12px rgba(255, 65, 108, 0.3);
+        }
+
+        /* Scrollbar customization */
+        .candidate-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .candidate-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .candidate-grid::-webkit-scrollbar-thumb {
+            background-color: #4b79a1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="voting-section">
+        <h1>Vote in the Election</h1>
+        <p id="electionName"></p>
+        <div class="candidate-grid" id="candidateGrid"></div>
+        <button onclick="submitVote()">Submit Vote</button>
+    </section>
+
+    <script>
+
+let electionData = {
+        electionName: '2024 S1 Election',
+        candidates: [
+            { name: 'Harsha', party: 'Party RSS' },
+            { name: 'Navya', party: 'Party PLL' }
+        ]
+    };
+
+        // Retrieve election data from localStorage
+        const electionData = JSON.parse(localStorage.getItem('electionData'));
+
+        // Check if election data exists
+        if (electionData) {
+            // Display the election name
+            document.getElementById('electionName').innerText = `Election: ${electionData.electionName}`;
+
+            
+
+            // Function to load candidates
+    function loadCandidates() {
+        document.getElementById('electionName').innerText = electionData.electionName;
+        const candidateList = document.getElementById('candidateList');
+        candidateList.innerHTML = ''; // Clear any previous candidates
+        electionData.candidates.forEach(candidate => {
+            const candidateItem = document.createElement('li');
+            candidateItem.innerHTML = `
+                <label>
+                    <input type="radio" name="candidate" value="${candidate.name}">
+                    ${candidate.name} (${candidate.party})
+                </label>
+            `;
+            candidateList.appendChild(candidateItem);
+        });
+    }
+
+            // Display the candidates in a grid layout
+            const candidateGrid = document.getElementById('candidateGrid');
+            electionData.candidates.forEach(candidate => {
+                const candidateCard = document.createElement('div');
+                candidateCard.className = 'candidate-card';
+                candidateCard.innerHTML = `
+                    <div class="candidate-icon">
+                        <span>${candidate.name[0]}</span>
+                    </div>
+                    <label>
+                        <input type="radio" name="candidate" value="${candidate.name}">
+                        ${candidate.name}
+                    </label>
+                    <p>(${candidate.party})</p>
+                `;
+                candidateGrid.appendChild(candidateCard);
+            });
+        } else {
+            document.querySelector('.voting-section').innerHTML = '<p>No election data found.</p>';
+        }
+
+        // Function to submit vote
+        function submitVote() {
+            const selectedCandidate = document.querySelector('input[name="candidate"]:checked');
+            if (selectedCandidate) {
+                const voteCounts = JSON.parse(localStorage.getItem('voteCounts')) || {};
+                const candidateName = selectedCandidate.value;
+
+                // Increment vote count for the selected candidate
+                voteCounts[candidateName] = (voteCounts[candidateName] || 0) + 1;
+                localStorage.setItem('voteCounts', JSON.stringify(voteCounts));
+
+                alert(`You voted for ${candidateName}`);
+                window.location.href = 'results.html'; // Redirect to results page
+            } else {
+                alert('Please select a candidate to vote for.');
+            }
+        }
+    </script>
+</body>
+</html>
